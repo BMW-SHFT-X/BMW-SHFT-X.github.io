@@ -117,45 +117,157 @@ body{
            onkeyup="searchCars()">
 </div>
 
-<div class="car-grid" id="carGrid">
+<div class="car-grid" id="carGrid"></div>
 
-    <!-- BMW -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e">
-        <div class="card-content">
-            <h2>BMW M3</h2>
-            <p class="spec">Engine: 3.0L Twin Turbo</p>
-            <p class="spec">Horsepower: 503 HP</p>
-            <p class="spec">Top Speed: 290 km/h</p>
-            <button class="btn">View Details</button>
+<script>
+
+const cars = [
+
+{
+    name:"BMW M3",
+    image:"https://images.unsplash.com/photo-1555215695-3004980ad54e",
+    engine:"3.0L Twin Turbo",
+    hp:"503 HP",
+    speed:"290 km/h"
+},
+
+{
+    name:"Bugatti Chiron",
+    image:"https://images.unsplash.com/photo-1544636331-e26879cd4d9b",
+    engine:"W16 Quad Turbo",
+    hp:"1500 HP",
+    speed:"420 km/h"
+},
+
+{
+    name:"Porsche 911",
+    image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+    engine:"Flat-6 Turbo",
+    hp:"473 HP",
+    speed:"308 km/h"
+},
+
+{
+    name:"McLaren P1",
+    image:"https://shorturl.at/C8KW8",
+    engine:"Hybrid Twin Turbo",
+    hp:"903 HP",
+    speed:"350 km/h"
+},
+
+{
+    name:"Ferrari SF90",
+    image:"https://shorturl.at/QWzLm",
+    engine:"4.0L Twin Turbo V8",
+    hp:"986 HP",
+    speed:"340 km/h"
+},
+
+{
+    name:"Nissan GT-R",
+    image:"https://shorturl.at/vGRq2",
+    engine:"3.8L Twin Turbo V6",
+    hp:"565 HP",
+    speed:"315 km/h"
+},
+
+{
+    name:"Koenigsegg Jesko",
+    image:"https://shorturl.at/0Cz0e",
+    engine:"5.0L Twin Turbo V8",
+    hp:"1600 HP",
+    speed:"480 km/h"
+},
+
+{
+    name:"Lamborghini Aventador",
+    image:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c",
+    engine:"6.5L V12",
+    hp:"769 HP",
+    speed:"350 km/h"
+},
+
+{
+    name:"Audi R8",
+    image:"https://shorturl.at/HwQAg",
+    engine:"5.2L V10",
+    hp:"602 HP",
+    speed:"330 km/h"
+},
+
+{
+    name:"Toyota Supra Fast And Furious",
+    image:"https://wallpapercave.com/wp/wp8204728.jpg",
+    engine:"3.0L Turbo",
+    hp:"382 HP",
+    speed:"250 km/h"
+}
+
+];
+
+const carGrid = document.getElementById("carGrid");
+
+function displayCars(carArray){
+
+    carGrid.innerHTML = "";
+
+    carArray.forEach(car => {
+
+        carGrid.innerHTML += `
+
+        <div class="card">
+
+            <img src="${car.image}">
+
+            <div class="card-content">
+
+                <h2>${car.name}</h2>
+
+                <p class="spec">
+                Engine: ${car.engine}
+                </p>
+
+                <p class="spec">
+                Horsepower: ${car.hp}
+                </p>
+
+                <p class="spec">
+                Top Speed: ${car.speed}
+                </p>
+
+                <button class="btn">
+                View Details
+                </button>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- Lamborghini -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b">
-        <div class="card-content">
-            <h2>Buggati Chiron</h2>
-            <p class="spec">Engine: W16 </p>
-            <p class="spec">Horsepower: 1,500 HP</p>
-            <p class="spec">Top Speed: 420 km/h</p>
-            <button class="btn">View Details</button>
-        </div>
-    </div>
+        `;
 
-    <!-- Porsche -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-        <div class="card-content">
-            <h2>Porsche 911</h2>
-            <p class="spec">Engine: Flat-6 Turbo</p>
-            <p class="spec">Horsepower: 473 HP</p>
-            <p class="spec">Top Speed: 308 km/h</p>
-            <button class="btn">View Details</button>
-        </div>
-    </div>
+    });
 
-</div>
+}
+
+displayCars(cars);
+
+function searchCars(){
+
+    let input =
+    document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+    let filteredCars = cars.filter(car =>
+        car.name.toLowerCase().includes(input)
+    );
+
+    displayCars(filteredCars);
+
+}
+
+</script>
 
 <script>
 
